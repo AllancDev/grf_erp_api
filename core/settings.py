@@ -101,6 +101,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DB_PASSWORD', 'usr_erp'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', 5432),
+        'OPTIONS': {
+            'sslmode': 'require' if os.getenv('DB_SSLMODE') == 'True' else None,
+        },
     }
 }
 
