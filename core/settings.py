@@ -26,10 +26,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+SECRET_KEY = 'django-insecure-3gm^b^o)1eulk=jw#4pc2a9ya*p(!_1&ein&@iwo)29ow_s$5l'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv('DEBUG', "False") == "True"
+
+CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', True)
+
+CORS_ALLOWED_ORIGINS=os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost').split(',')
+
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'http://localhost').split(',')
-CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost').split(',')
 
 
 # Application definition
@@ -150,5 +156,6 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "SLIDING_TOKEN_LIFETIME": timedelta(days=int(os.getenv("SLIDING_TOKEN_LIFETIME", 1))),
+    "SLIDING_TOKEN_LIFETIME": timedelta(days=1),
+
 }
